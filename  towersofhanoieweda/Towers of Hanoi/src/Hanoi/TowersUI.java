@@ -137,12 +137,12 @@ public class TowersUI {
 		canvas.addPaintListener(new PaintListener(){
 			@Override
 			public void paintControl(PaintEvent e) {
-				Iterator<ShapeIF> iter = shapes.iterator();
-				while (iter.hasNext())
-					iter.next().draw(e.gc);
 				Iterator<Tower> iterator = towers.iterator();
 				while (iterator.hasNext())
 					iterator.next().draw(e.gc);
+				Iterator<ShapeIF> iter = shapes.iterator();
+				while (iter.hasNext())
+					iter.next().draw(e.gc);
 				tool.drawShape(e.gc, null);
 			}});
 		createShapes();
