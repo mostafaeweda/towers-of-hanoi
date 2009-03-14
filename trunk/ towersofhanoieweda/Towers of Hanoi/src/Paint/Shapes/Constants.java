@@ -1,16 +1,11 @@
 package Paint.Shapes;
 /**
- * @author Mostafa Eweda & Mohammed Abd El Salam
+ * Interface having the constants of the shapes
+ * @author  Mostafa Mahmoud Mahmoud Eweda
  * @version 1.0
  * @since JDK 1.6
  */
 public interface Constants {
-	int ON = 1 << 4;
-
-	/**
-	 * 
-	 */
-	int OFF = 1 << 5;
 
 	/**
 	 * 

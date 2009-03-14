@@ -11,7 +11,7 @@ import Paint.Shapes.ShapeIF;
  * the tool interface that defines the desired to be implemented behavior
  * @see MouseListener
  * @see MouseMoveListener
- * @author   Mostafa Eweda & Mohammed Abd El Salam
+ * @author   Mostafa Mahmoud Mahmoud Eweda
  */
 public interface ToolIF extends MouseListener, MouseMoveListener {
 
@@ -24,21 +24,18 @@ public interface ToolIF extends MouseListener, MouseMoveListener {
 
 	/**
 	 * @return   the current shape element tha the tool is manipulating
-	 * @uml.property  name="element"
-	 * @uml.associationEnd  
 	 */
 	public ShapeIF getElement();
 
 	/**
 	 * sets the current shape of the application to draw
 	 * @param  shape
-	 * @uml.property  name="element"
 	 */
 	public void setElement(ShapeIF shape);
 
 	/**
 	 * sets the tool data with the updated data from the drawing application
-	 * @param color
+	 * @param color the color of the tool
 	 * @param width line width chosen by the user
 	 */
 	public void setData(Color color, int width);

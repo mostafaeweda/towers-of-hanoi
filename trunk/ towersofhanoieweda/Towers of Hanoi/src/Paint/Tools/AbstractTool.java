@@ -11,34 +11,22 @@ import Paint.Shapes.ShapeIF;
  * Provides default behavior for the tool interface
  * @see ToolIF  implemented interface
  * @see ShapeIF
- * @author  Mostafa Eweda & Mohammed Abd El Salam
+ * @author  Mostafa Mahmoud Mahmoud Eweda
  * @version  1.0
  * @since  JDK 1.6
  */
 public abstract class AbstractTool implements ToolIF {
 
-	/**
-	 * @uml.property  name="element"
-	 * @uml.associationEnd  
-	 */
 	protected ShapeIF element;
 
 	protected AbstractTool() {
 	}
 
-	/**
-	 * @param shape
-	 * @uml.property  name="element"
-	 */
 	@Override
 	public void setElement(ShapeIF shape) {
 		element = shape;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="element"
-	 */
 	@Override
 	public final ShapeIF getElement() {
 		return element;

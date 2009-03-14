@@ -7,7 +7,7 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * Eraser Shape
- * @author Mostafa Eweda & Mohammed Abd El Salam
+ * @author  Mostafa Mahmoud Mahmoud Eweda
  * @see FreePenShape
  * @version 1.0
  * @since JDK 1.6

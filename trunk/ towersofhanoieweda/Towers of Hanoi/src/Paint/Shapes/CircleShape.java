@@ -12,7 +12,7 @@ import org.eclipse.swt.graphics.Rectangle;
 /**
  * Circle shape
  * @see AbstractShape extending from
- * @author Mostafa Eweda & Mohammed Abd El Salam
+ * @author  Mostafa Mahmoud Mahmoud Eweda
  * @version 1.0
  * @since JDK 1.6
  */
