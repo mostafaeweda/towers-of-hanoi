@@ -19,12 +19,30 @@ import Paint.Tools.ToolIF;
  * @since  JDK 1.6
  */
 public class MoveTool extends AbstractTool {
-	
+
+	/**
+	 * static instance of the class that provides the singleton pattern
+	 */
 	private static MoveTool instance;
 
+	/**
+	 * true if the mouse is clicked or dragging
+	 */
 	private boolean mouseDown;
+
+	/**
+	 * The disk of interest to the player
+	 */
 	private Disk disk;
+
+	/**
+	 * The tower from which the user has removes the disk
+	 */
 	private Tower tower;
+
+	/**
+	 * The current point of the cursor of the user
+	 */
 	private Point currentPoint;
 
 	public static synchronized MoveTool getInstance() {
@@ -38,6 +56,9 @@ public class MoveTool extends AbstractTool {
 		mouseDown = false;
 	}
 
+	/**
+	 * process the mouse down event
+	 */
 	public void mouseDown(MouseEvent e) {
 		Iterator<Tower> towersIter = TowersUI.getInstance().getTowers().iterator();
 		while (towersIter.hasNext() && disk == null) {
@@ -50,9 +71,12 @@ public class MoveTool extends AbstractTool {
 		}
 	}
 
+	/**
+	 * process the mouse up event
+	 */
 	public void mouseUp(MouseEvent e) {
 		if (mouseDown) {
-			TowersUI.getInstance().defaultCursor();
+//			TowersUI.getInstance().defaultCursor(); // automatically done by default
 			Iterator<Tower> towersIter = TowersUI.getInstance().getTowers().iterator();
 			Tower temp;
 			boolean done = false;
@@ -61,6 +85,7 @@ public class MoveTool extends AbstractTool {
 				if (temp.intersect(disk) && temp.push(disk)) {
 					done = true;
 					TowersUI.getInstance().incrementMoves();
+					break;
 				}
 			}
 			if (! done)
@@ -72,11 +97,17 @@ public class MoveTool extends AbstractTool {
 		mouseDown = false;
 	}
 
+	/**
+	 * @see AbstractTool#drawShape(GC, Point)
+	 */
 	public void drawShape(GC gc, Point curent) {
 		if (disk != null)
 			disk.draw(gc);
 	}
 
+	/**
+	 * process mouse moce event
+	 */
 	public void mouseMove(MouseEvent e) {
 		if (mouseDown) {
 			disk.relocate(e.x - currentPoint.x, e.y - currentPoint.y);
