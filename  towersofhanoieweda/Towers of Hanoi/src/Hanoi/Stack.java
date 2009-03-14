@@ -35,7 +35,7 @@ public class Stack {
 
 	/**
      * Pushes an item onto the top of this stack.
-     * @param e the item to be pushed onto this stack.
+     * @param d the disk to be pushed onto this stack.
      * @see ArrayList#add(Object)t
      */
 	public boolean push(Disk d) {
