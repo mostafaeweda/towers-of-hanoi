@@ -27,6 +27,7 @@ import org.eclipse.swt.events.TraverseListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
@@ -48,6 +49,13 @@ import org.eclipse.swt.widgets.Spinner;
 
 import Paint.Shapes.ShapeIF;
 
+/**
+ * The UI controller that provides easy access to the underlying objects
+ * takes the responsibility of calling all the necessary classes
+ * @author Mostafa mahmoud Mahmoud Eweda
+ * @since JDK 1.0
+ * @version 1.0
+ */
 public class TowersUI {
 
 	private static final int DEFULT_WAIT_TIME = 1000;
@@ -64,6 +72,7 @@ public class TowersUI {
 	private long startTime = 0;
 	private Runnable updateTimer;
 	private Composite currentComposite;
+	private Image background;
 	private Cursor handCursor;
 	private Cursor defaultCursor;
 	private boolean solution = false;
@@ -107,6 +116,8 @@ public class TowersUI {
 			@Override
 			public void widgetDisposed(DisposeEvent e) {
 				font.dispose();
+				Disk.dispose();
+				Tower.dispose();
 				display.dispose();
 				System.exit(0);
 			}});
@@ -132,18 +143,24 @@ public class TowersUI {
 		formData.right = new FormAttachment(100, -400);
 		formData.top = new FormAttachment(0, 50);
 		formData.bottom = new FormAttachment(100, -55);
+		Rectangle displayBounds = display.getBounds();
+		background = new Image(display, new ImageData(TowersUI.class.getResourceAsStream("hanoi background.jpg"))
+						.scaledTo(displayBounds.width - 405, displayBounds.height - 105));
 		canvas.setLayoutData(formData);
-		canvas.setBackground(display.getSystemColor(SWT.COLOR_DARK_GRAY));
 		canvas.addPaintListener(new PaintListener(){
 			@Override
 			public void paintControl(PaintEvent e) {
+				GC gc = e.gc;
+				gc.setAlpha(100);
+				gc.drawImage(background, 0, 0);
+				gc.setAlpha(255);
 				Iterator<Tower> iterator = towers.iterator();
 				while (iterator.hasNext())
-					iterator.next().draw(e.gc);
+					iterator.next().draw(gc);
 				Iterator<ShapeIF> iter = shapes.iterator();
 				while (iter.hasNext())
-					iter.next().draw(e.gc);
-				tool.drawShape(e.gc, null);
+					iter.next().draw(gc);
+				tool.drawShape(gc, null);
 			}});
 		createShapes();
 		canvas.addMouseListener(new MouseListener(){
