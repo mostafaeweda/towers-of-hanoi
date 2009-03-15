@@ -12,6 +12,7 @@ h1 { font-size: 145% }
 .TableHeadingColor     { background: #CCCCFF; color:#000000 } /* Dark mauve */
 .TableSubHeadingColor  { background: #EEEEFF; color:#000000 } /* Light mauve */
 .TableRowColor         { background: #FFFFFF; color:#000000 } /* White */
+body {background: Silver url('hanoi background.jpg') fixed no-repeat right}
 
 /* Font used in left-hand frame lists */
 .FrameTitleFont   { font-size: 100%; font-family: Helvetica, Arial, sans-serif; color:#000000 }
