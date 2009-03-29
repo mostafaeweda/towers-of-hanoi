@@ -72,8 +72,9 @@ public class TowersUI {
 	private long startTime = 0;
 	private Runnable updateTimer;
 	private Composite currentComposite;
-	private Image background;
 	private Cursor handCursor;
+
+	private Image background;
 	private Cursor defaultCursor;
 	private boolean solution = false;
 
